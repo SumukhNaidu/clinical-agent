@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: cliniq-backend
+    env: docker
+    repo: '' # set your Git repo URL or leave blank when connecting via Render UI
+    branch: main
+    dockerfilePath: cliniq-backend/Dockerfile
+    plan: standard
+    disk:
+      mountPath: /data
+      sizeGb: 10
+    envVars:
+      - key: LLM_PROVIDER
+        value: openai
+        scope: runtime
+      - key: OPENAI_API_KEY
+        value: ''
+        scope: runtime
+      - key: CHROMA_PERSIST_DIR
+        value: /data/chroma_data
+        scope: runtime
+
+# Notes:
+# - Replace repo with your Git URL if you use render.yaml for IaC. When creating
+#   via the Render dashboard you can connect the repo and set the same fields.
+# - The `disk` section will provision a persistent disk and mount it at /data
+#   inside the container. `CHROMA_PERSIST_DIR` points to /data/chroma_data so the
+#   vector DB persists across deploys.
