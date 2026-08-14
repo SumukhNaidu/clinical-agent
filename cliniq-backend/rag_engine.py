@@ -76,13 +76,33 @@ class RAGEngine:
         if self.llm_provider == "openai":
             return OpenAIEmbeddings(model="text-embedding-3-small")
         else:
-            return OllamaEmbeddings(model="nomic-embed-text")
+            ollama_base_url = os.getenv(
+                "OLLAMA_BASE_URL",
+                "http://localhost:11434"
+            )
+
+            return OllamaEmbeddings(
+                model="nomic-embed-text",
+                base_url=ollama_base_url
+            )
 
     def _init_llm(self):
         if self.llm_provider == "openai":
-            return ChatOpenAI(model="gpt-4o-mini", temperature=0)
+            return ChatOpenAI(
+                model="gpt-4o-mini",
+                temperature=0
+            )
         else:
-            return OllamaLLM(model="qwen2.5:1.5b", temperature=0)
+            ollama_base_url = os.getenv(
+                "OLLAMA_BASE_URL",
+                "http://localhost:11434"
+            )
+
+            return OllamaLLM(
+                model="qwen2.5:1.5b",
+                temperature=0,
+                base_url=ollama_base_url
+            )
 
     def process_document(self, file_path: str, filename: str, domain: Optional[str] = 'general') -> dict:
         def _safe_domain(d):
