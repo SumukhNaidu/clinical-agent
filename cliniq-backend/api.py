@@ -2,6 +2,7 @@ import os
 import shutil
 import json
 import traceback
+import logging
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,50 +12,67 @@ from dotenv import load_dotenv
 from models import UploadResponse, QueryRequest, QueryResponse, SessionHistory
 
 
-# ============================================================
-# ENVIRONMENT
-# ============================================================
-
 load_dotenv()
 
+# ============================================================
+# LOGGING
+# ============================================================
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    force=True
+)
+
+logger = logging.getLogger("cliniq")
+
 
 # ============================================================
-# FASTAPI APP
+# APP
 # ============================================================
 
 app = FastAPI(title="ClinIQ API")
+
+rag_engine = None
+
+
+# ============================================================
+# DEBUG VERSION
+# ============================================================
+
+@app.get("/debug")
+async def debug():
+    logger.info("DEBUG ENDPOINT WAS CALLED")
+
+    return {
+        "status": "ok",
+        "version": "UPLOAD_DEBUG_V2",
+        "message": "This is the new deployed api.py"
+    }
 
 
 # ============================================================
 # RAG ENGINE
 # ============================================================
 
-# Lazily instantiate RAGEngine.
-# This allows the API to start even if heavy ML dependencies
-# are not loaded until an actual RAG operation is requested.
-
-rag_engine = None
-
-
 def get_rag_engine():
     global rag_engine
 
     if rag_engine is None:
         try:
-            print("========== INITIALIZING RAG ENGINE ==========")
+            logger.info("========== INITIALIZING RAG ENGINE ==========")
 
             from rag_engine import RAGEngine
 
             rag_engine = RAGEngine()
 
-            print("========== RAG ENGINE INITIALIZED ==========")
+            logger.info("========== RAG ENGINE INITIALIZED ==========")
 
         except Exception as e:
-            print("========== RAG ENGINE INITIALIZATION ERROR ==========")
-            print(f"Error type: {type(e).__name__}")
-            print(f"Error message: {str(e)}")
-            traceback.print_exc()
-            print("======================================================")
+            logger.error("========== RAG ENGINE INITIALIZATION ERROR ==========")
+            logger.error(f"Error type: {type(e).__name__}")
+            logger.error(f"Error message: {str(e)}")
+            logger.error(traceback.format_exc())
 
             return None
 
@@ -75,7 +93,7 @@ app.add_middleware(
 
 
 # ============================================================
-# TEMP UPLOAD DIRECTORY
+# TEMP DIRECTORY
 # ============================================================
 
 os.makedirs("./temp_uploads", exist_ok=True)
@@ -90,23 +108,26 @@ async def root():
     return {
         "message": "ClinIQ API is running",
         "docs": "/docs",
-        "health": "/health"
+        "health": "/health",
+        "debug": "/debug"
     }
 
 
 # ============================================================
-# HEALTH CHECK
+# HEALTH
 # ============================================================
 
 @app.get("/health")
 async def health_check():
+    logger.info("HEALTH ENDPOINT CALLED")
+
     return {
         "status": "ok"
     }
 
 
 # ============================================================
-# UPLOAD DOCUMENT
+# UPLOAD
 # ============================================================
 
 @app.post("/upload", response_model=UploadResponse)
@@ -115,21 +136,29 @@ async def upload_document(
     domain: str = Form("general")
 ):
 
-    print("========== UPLOAD REQUEST RECEIVED ==========")
-    print(f"Filename: {file.filename}")
-    print(f"Domain: {domain}")
+    # THIS MUST APPEAR IN RENDER LOGS
+    logger.info("================================================")
+    logger.info("========== POST /upload RECEIVED ===============")
+    logger.info(f"Filename: {file.filename}")
+    logger.info(f"Domain: {domain}")
+    logger.info("================================================")
 
     # --------------------------------------------------------
     # Validate filename
     # --------------------------------------------------------
 
     if not file.filename:
+        logger.error("No filename received")
+
         raise HTTPException(
             status_code=400,
             detail="INVALID_FILE_NAME"
         )
 
-    filename_lower = file.filename.lower()
+    filename = os.path.basename(file.filename)
+    filename_lower = filename.lower()
+
+    logger.info(f"Safe filename: {filename}")
 
     # --------------------------------------------------------
     # Validate file type
@@ -139,26 +168,35 @@ async def upload_document(
         filename_lower.endswith(".pdf")
         or filename_lower.endswith(".docx")
     ):
+
+        logger.error(
+            f"Invalid file type: {filename}"
+        )
+
         raise HTTPException(
             status_code=400,
             detail="INVALID_FILE_TYPE"
         )
 
     # --------------------------------------------------------
-    # Validate file size
+    # File size
     # --------------------------------------------------------
 
     try:
+
         file.file.seek(0, 2)
         file_size = file.file.tell()
         file.file.seek(0)
 
-        print(f"File size: {file_size} bytes")
+        logger.info(
+            f"File size: {file_size} bytes"
+        )
 
     except Exception as e:
-        print("========== FILE SIZE CHECK ERROR ==========")
-        print(f"Error: {str(e)}")
-        traceback.print_exc()
+
+        logger.error(
+            f"FILE SIZE ERROR: {str(e)}"
+        )
 
         raise HTTPException(
             status_code=400,
@@ -166,27 +204,24 @@ async def upload_document(
         )
 
     if file_size > 25 * 1024 * 1024:
+
         raise HTTPException(
             status_code=400,
             detail="FILE_TOO_LARGE"
         )
 
     # --------------------------------------------------------
-    # Create safe temporary filename
+    # Save file
     # --------------------------------------------------------
-
-    safe_filename = os.path.basename(file.filename)
 
     temp_path = os.path.join(
         "./temp_uploads",
-        safe_filename
+        filename
     )
 
-    print(f"Temporary file path: {temp_path}")
-
-    # --------------------------------------------------------
-    # Save uploaded file
-    # --------------------------------------------------------
+    logger.info(
+        f"Saving uploaded file to: {temp_path}"
+    )
 
     try:
 
@@ -196,14 +231,20 @@ async def upload_document(
                 buffer
             )
 
-        print("File successfully saved.")
+        logger.info("FILE SAVED SUCCESSFULLY")
 
     except Exception as e:
 
-        print("========== FILE SAVE ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
-        traceback.print_exc()
+        logger.error("========== FILE SAVE ERROR ==========")
+        logger.error(
+            f"Error type: {type(e).__name__}"
+        )
+        logger.error(
+            f"Error message: {str(e)}"
+        )
+        logger.error(
+            traceback.format_exc()
+        )
 
         raise HTTPException(
             status_code=500,
@@ -211,16 +252,21 @@ async def upload_document(
         )
 
     # --------------------------------------------------------
-    # Get RAG engine
+    # RAG ENGINE
     # --------------------------------------------------------
+
+    logger.info("Getting RAG engine...")
 
     engine = get_rag_engine()
 
     if engine is None:
 
-        print("RAG engine could not be initialized.")
+        logger.error(
+            "RAG ENGINE IS NONE"
+        )
 
         if os.path.exists(temp_path):
+
             try:
                 os.remove(temp_path)
             except Exception:
@@ -232,41 +278,66 @@ async def upload_document(
         )
 
     # --------------------------------------------------------
-    # Process document
+    # PROCESS DOCUMENT
     # --------------------------------------------------------
 
     try:
 
-        print("========== STARTING DOCUMENT PROCESSING ==========")
-        print(f"Processing: {safe_filename}")
-        print(f"Domain: {domain}")
+        logger.info(
+            "========== STARTING RAG PROCESSING =========="
+        )
+
+        logger.info(
+            f"Calling engine.process_document()"
+        )
 
         result = engine.process_document(
             temp_path,
-            safe_filename,
+            filename,
             domain=domain
         )
 
-        print("========== DOCUMENT PROCESSING SUCCESS ==========")
-        print(f"Result: {result}")
+        logger.info(
+            "========== RAG PROCESSING SUCCESS =========="
+        )
+
+        logger.info(
+            f"Result: {result}"
+        )
 
         return UploadResponse(**result)
 
     except Exception as e:
 
-        print("========== UPLOAD PROCESSING ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
-        print("---------- FULL TRACEBACK ----------")
+        logger.error(
+            "================================================"
+        )
 
-        traceback.print_exc()
+        logger.error(
+            "========== RAG PROCESSING ERROR ================"
+        )
 
-        print("==============================================")
+        logger.error(
+            f"Error type: {type(e).__name__}"
+        )
 
-        # IMPORTANT:
-        # We expose the actual error temporarily so that
-        # Render logs and Swagger show what is failing.
+        logger.error(
+            f"Error message: {str(e)}"
+        )
 
+        logger.error(
+            "========== FULL TRACEBACK ======================"
+        )
+
+        logger.error(
+            traceback.format_exc()
+        )
+
+        logger.error(
+            "================================================"
+        )
+
+        # TEMPORARILY expose actual error
         raise HTTPException(
             status_code=500,
             detail=(
@@ -278,44 +349,31 @@ async def upload_document(
 
     finally:
 
-        # ----------------------------------------------------
-        # Clean temporary file
-        # ----------------------------------------------------
-
         if os.path.exists(temp_path):
 
             try:
 
                 os.remove(temp_path)
 
-                print(
-                    f"Temporary file removed: {temp_path}"
-                )
-
-            except PermissionError:
-
-                print(
-                    "Could not remove temporary file "
-                    "because it is still being used."
+                logger.info(
+                    "Temporary file deleted."
                 )
 
             except Exception as e:
 
-                print(
-                    f"Temporary file cleanup failed: {str(e)}"
+                logger.warning(
+                    f"Could not delete temp file: {str(e)}"
                 )
 
 
 # ============================================================
-# QUERY DOCUMENT
+# QUERY
 # ============================================================
 
 @app.post("/query", response_model=QueryResponse)
 async def query_document(request: QueryRequest):
 
-    print("========== QUERY REQUEST ==========")
-    print(f"Document ID: {request.doc_id}")
-    print(f"Question: {request.question}")
+    logger.info("========== POST /query RECEIVED ==========")
 
     engine = get_rag_engine()
 
@@ -344,8 +402,9 @@ async def query_document(request: QueryRequest):
 
     except ValueError as e:
 
-        print("========== QUERY VALUE ERROR ==========")
-        print(str(e))
+        logger.error(
+            f"QUERY VALUE ERROR: {str(e)}"
+        )
 
         if "Collection" in str(e):
 
@@ -361,10 +420,13 @@ async def query_document(request: QueryRequest):
 
     except Exception as e:
 
-        print("========== QUERY ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
-        traceback.print_exc()
+        logger.error(
+            f"QUERY ERROR: {str(e)}"
+        )
+
+        logger.error(
+            traceback.format_exc()
+        )
 
         raise HTTPException(
             status_code=503,
@@ -373,7 +435,7 @@ async def query_document(request: QueryRequest):
 
 
 # ============================================================
-# STREAMING QUERY
+# STREAM QUERY
 # ============================================================
 
 @app.post("/query/stream")
@@ -381,9 +443,9 @@ async def query_document_stream(
     request: QueryRequest
 ):
 
-    print("========== STREAM QUERY REQUEST ==========")
-    print(f"Document ID: {request.doc_id}")
-    print(f"Question: {request.question}")
+    logger.info(
+        "========== POST /query/stream RECEIVED =========="
+    )
 
     engine = get_rag_engine()
 
@@ -416,42 +478,26 @@ async def query_document_stream(
                         chunk,
                         (dict, list)
                     ):
+
                         data = json.dumps(chunk)
 
                     else:
+
                         data = str(chunk)
 
                     yield data
 
                 yield "__DONE__"
 
-            except ValueError as e:
-
-                print(
-                    "========== STREAM VALUE ERROR =========="
-                )
-
-                print(str(e))
-
-                yield json.dumps({
-                    "error": "DOC_NOT_FOUND"
-                })
-
             except Exception as e:
 
-                print(
-                    "========== STREAM QUERY ERROR =========="
+                logger.error(
+                    f"STREAM ERROR: {str(e)}"
                 )
 
-                print(
-                    f"Error type: {type(e).__name__}"
+                logger.error(
+                    traceback.format_exc()
                 )
-
-                print(
-                    f"Error message: {str(e)}"
-                )
-
-                traceback.print_exc()
 
                 yield json.dumps({
                     "error": "LLM_ERROR"
@@ -462,27 +508,15 @@ async def query_document_stream(
             media_type="text/plain"
         )
 
-    except ValueError as e:
-
-        if "Collection" in str(e):
-
-            raise HTTPException(
-                status_code=404,
-                detail="DOC_NOT_FOUND"
-            )
-
-        raise HTTPException(
-            status_code=500,
-            detail="PROCESSING_ERROR"
-        )
-
     except Exception as e:
 
-        print("========== STREAM SETUP ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
+        logger.error(
+            f"STREAM SETUP ERROR: {str(e)}"
+        )
 
-        traceback.print_exc()
+        logger.error(
+            traceback.format_exc()
+        )
 
         raise HTTPException(
             status_code=503,
@@ -491,7 +525,7 @@ async def query_document_stream(
 
 
 # ============================================================
-# GET SESSION HISTORY
+# SESSION
 # ============================================================
 
 @app.get(
@@ -500,8 +534,8 @@ async def query_document_stream(
 )
 async def get_session(doc_id: str):
 
-    print(
-        f"========== GET SESSION: {doc_id} =========="
+    logger.info(
+        f"GET SESSION: {doc_id}"
     )
 
     engine = get_rag_engine()
@@ -525,11 +559,13 @@ async def get_session(doc_id: str):
 
     except Exception as e:
 
-        print("========== SESSION ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
+        logger.error(
+            f"SESSION ERROR: {str(e)}"
+        )
 
-        traceback.print_exc()
+        logger.error(
+            traceback.format_exc()
+        )
 
         raise HTTPException(
             status_code=500,
@@ -544,8 +580,8 @@ async def get_session(doc_id: str):
 @app.delete("/document/{doc_id}")
 async def delete_document(doc_id: str):
 
-    print(
-        f"========== DELETE DOCUMENT: {doc_id} =========="
+    logger.info(
+        f"DELETE DOCUMENT: {doc_id}"
     )
 
     engine = get_rag_engine()
@@ -567,11 +603,13 @@ async def delete_document(doc_id: str):
 
     except Exception as e:
 
-        print("========== DELETE DOCUMENT ERROR ==========")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
+        logger.error(
+            f"DELETE ERROR: {str(e)}"
+        )
 
-        traceback.print_exc()
+        logger.error(
+            traceback.format_exc()
+        )
 
         raise HTTPException(
             status_code=500,
@@ -580,15 +618,22 @@ async def delete_document(doc_id: str):
 
 
 # ============================================================
-# LOCAL DEVELOPMENT
+# LOCAL
 # ============================================================
 
 if __name__ == "__main__":
 
     import uvicorn
 
+    port = int(
+        os.environ.get(
+            "PORT",
+            8000
+        )
+    )
+
     uvicorn.run(
         app,
         host="0.0.0.0",
-        port=8000
+        port=port
     )
