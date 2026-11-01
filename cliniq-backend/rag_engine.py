@@ -1,5 +1,6 @@
 
 import os
+import re
 import uuid
 import time
 from typing import List, Optional
@@ -10,8 +11,10 @@ from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, OllamaLLM
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_core.embeddings import Embeddings
 from langchain_core.prompts import ChatPromptTemplate
 import json
+import chromadb
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
@@ -20,12 +23,41 @@ from models import Citation
 load_dotenv()
 
 
+# (query prefix, document prefix) each embedding model was trained with
+EMBED_PREFIXES = {
+    "qwen3-embedding": (
+        "Instruct: Given a question, retrieve passages from the document that answer the question\nQuery:",
+        ""
+    ),
+    "nomic-embed-text": ("search_query: ", "search_document: "),
+}
+
+
+def _embed_family(model: str) -> Optional[str]:
+    name = model.lower()
+    return next((family for family in EMBED_PREFIXES if family in name), None)
+
+
+class PrefixedEmbeddings(Embeddings):
+    """Adds the model's query/document prefixes before embedding."""
+
+    def __init__(self, base: Embeddings, query_prefix: str = "", doc_prefix: str = ""):
+        self.base = base
+        self.query_prefix = query_prefix
+        self.doc_prefix = doc_prefix
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        return self.base.embed_documents([self.doc_prefix + t for t in texts])
+
+    def embed_query(self, text: str) -> List[float]:
+        return self.base.embed_query(self.query_prefix + text)
+
+
 class RAGEngine:
     def __init__(self):
         self.llm_provider = os.getenv("LLM_PROVIDER", "ollama")
-        self.chroma_persist_dir = os.getenv('CHROMA_PERSIST_DIR', './chroma_data')
-        os.makedirs(self.chroma_persist_dir, exist_ok=True)
-        
+        self.chroma_client = self._init_chroma_client()
+
         self.embeddings = self._init_embeddings()
         self.llm = self._init_llm()
         self.text_splitter = RecursiveCharacterTextSplitter(
@@ -36,6 +68,26 @@ class RAGEngine:
         
         self.session_histories = {}
         self.doc_domains = {}
+
+    def _init_chroma_client(self):
+        # Chroma server (CHROMA_HOST set) or embedded on-disk store as a fallback
+        chroma_host = os.getenv("CHROMA_HOST")
+        if chroma_host:
+            return chromadb.HttpClient(
+                host=chroma_host,
+                port=int(os.getenv("CHROMA_PORT", "8000"))
+            )
+
+        persist_dir = os.getenv('CHROMA_PERSIST_DIR', './chroma_data')
+        os.makedirs(persist_dir, exist_ok=True)
+        return chromadb.PersistentClient(path=persist_dir)
+
+    def _vector_db(self, doc_id: str) -> Chroma:
+        return Chroma(
+            client=self.chroma_client,
+            collection_name=doc_id,
+            embedding_function=self.embeddings
+        )
 
     def _load_prompt(self, domain: str) -> str:
         domain_key = (domain or 'general').lower()
@@ -81,9 +133,17 @@ class RAGEngine:
                 "http://localhost:11434"
             )
 
-            return OllamaEmbeddings(
-                model="nomic-embed-text",
-                base_url=ollama_base_url
+            embed_model = os.getenv(
+                "OLLAMA_EMBED_MODEL",
+                "hf.co/Qwen/Qwen3-Embedding-0.6B-GGUF:Q8_0"
+            )
+
+            return PrefixedEmbeddings(
+                OllamaEmbeddings(
+                    model=embed_model,
+                    base_url=ollama_base_url
+                ),
+                *EMBED_PREFIXES.get(_embed_family(embed_model), ("", ""))
             )
 
     def _init_llm(self):
@@ -98,11 +158,51 @@ class RAGEngine:
                 "http://localhost:11434"
             )
 
+            # Default is Qwen3-4B (HF GGUF, Q4_K_M), built from ollama/Modelfile
             return OllamaLLM(
-                model="qwen2.5:1.5b",
+                model=os.getenv("OLLAMA_MODEL", "qwen3-4b-nothink"),
                 temperature=0,
                 base_url=ollama_base_url
             )
+
+    def _human_template(self) -> str:
+        # Qwen3 soft switch: "/no_think" in the user turn disables reasoning
+        if self.llm_provider == "openai":
+            return "{input}"
+        return "{input} /no_think"
+
+    @staticmethod
+    def _strip_think(text: str) -> str:
+        return re.sub(r"<think>.*?</think>\s*", "", text, flags=re.DOTALL).lstrip()
+
+    @staticmethod
+    def _strip_think_stream(stream):
+        """Drop a leading <think>...</think> block from a token stream."""
+        buffer = ""
+        passthrough = False
+        started = False  # skip whitespace between </think> and the answer
+        for item in stream:
+            if passthrough:
+                if not started:
+                    item = str(item).lstrip()
+                    if not item:
+                        continue
+                    started = True
+                yield item
+                continue
+            buffer += str(item)
+            stripped = buffer.lstrip()
+            if "<think>".startswith(stripped) or (stripped.startswith("<think>") and "</think>" not in stripped):
+                continue  # still inside (or possibly starting) a think block
+            passthrough = True
+            rest = RAGEngine._strip_think(buffer)
+            if rest:
+                started = True
+                yield rest
+        if not passthrough and buffer:
+            rest = RAGEngine._strip_think(buffer)
+            if rest:
+                yield rest
 
     def process_document(self, file_path: str, filename: str, domain: Optional[str] = 'general') -> dict:
         def _safe_domain(d):
@@ -131,11 +231,7 @@ class RAGEngine:
             chunk.metadata["domain"] = _safe_domain(domain)
         
         # Store in ChromaDB
-        vector_db = Chroma(
-            collection_name=doc_id,
-            embedding_function=self.embeddings,
-            persist_directory=self.chroma_persist_dir
-        )
+        vector_db = self._vector_db(doc_id)
         vector_db.add_documents(chunks)
         
         # Initialize session history and record domain
@@ -155,12 +251,8 @@ class RAGEngine:
         start_time = time.time()
         
         # Load vector DB for this doc
-        vector_db = Chroma(
-            collection_name=doc_id,
-            embedding_function=self.embeddings,
-            persist_directory=self.chroma_persist_dir
-        )
-        retriever = vector_db.as_retriever(k=3)
+        vector_db = self._vector_db(doc_id)
+        retriever = vector_db.as_retriever(search_kwargs={"k": 3})
         
         # Retrieve relevant docs first
         docs = retriever.invoke(question)
@@ -180,20 +272,18 @@ class RAGEngine:
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
-            ("human", "{input}")
+            ("human", self._human_template())
         ])
-        
-        # Build chain manually with LCEL
-        chain = (
-            {"context": retriever | format_docs, "input": RunnablePassthrough()}
-            | prompt
-            | self.llm
-            | StrOutputParser()
-        )
-        
+
+        # Reuse the docs retrieved above as context (avoids a second search)
+        chain = prompt | self.llm | StrOutputParser()
+
         # Get response (handle LLM/backend errors)
         try:
-            answer = chain.invoke(question)
+            answer = self._strip_think(chain.invoke({
+                "context": format_docs(docs),
+                "input": question
+            }))
         except Exception:
             import traceback
             traceback.print_exc()
@@ -236,12 +326,8 @@ class RAGEngine:
             return (d or 'general').lower()
 
         # Load vector DB for this doc
-        vector_db = Chroma(
-            collection_name=doc_id,
-            embedding_function=self.embeddings,
-            persist_directory=self.chroma_persist_dir
-        )
-        retriever = vector_db.as_retriever(k=3)
+        vector_db = self._vector_db(doc_id)
+        retriever = vector_db.as_retriever(search_kwargs={"k": 3})
 
         def format_docs(docs):
             return "\n\n".join(doc.page_content for doc in docs)
@@ -256,7 +342,7 @@ class RAGEngine:
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
-            ("human", "{input}")
+            ("human", self._human_template())
         ])
 
         chain = (
@@ -268,7 +354,7 @@ class RAGEngine:
 
         # Try to stream from the chain if it supports streaming
         try:
-            stream_iter = chain.stream(question)
+            stream_iter = self._strip_think_stream(chain.stream(question))
             for item in stream_iter:
                 # Item may be a string delta or object; normalize to string
                 try:
@@ -284,7 +370,7 @@ class RAGEngine:
 
         # Non-streaming fallback: invoke and yield in chunks (handle LLM errors)
         try:
-            full = chain.invoke(question)
+            full = self._strip_think(chain.invoke(question))
         except Exception:
             import traceback
             traceback.print_exc()
@@ -299,10 +385,8 @@ class RAGEngine:
 
     def delete_document(self, doc_id: str) -> dict:
         # Delete ChromaDB collection
-        import chromadb
-        client = chromadb.PersistentClient(path=self.chroma_persist_dir)
         try:
-            client.delete_collection(doc_id)
+            self.chroma_client.delete_collection(doc_id)
         except ValueError:
             pass  # Collection doesn't exist
             
