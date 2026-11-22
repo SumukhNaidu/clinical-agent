@@ -4,12 +4,18 @@ import json
 import traceback
 import logging
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, Form
+import time
+
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, Response
 from dotenv import load_dotenv
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
 from models import UploadResponse, QueryRequest, QueryResponse, SessionHistory
+from monitoring import HTTP_REQUESTS, HTTP_LATENCY, VECTOR_COLLECTIONS, VECTOR_CHUNKS
+from inspector import create_inspector_router
+from domains import list_domains
 
 
 load_dotenv()
@@ -90,6 +96,53 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ============================================================
+# METRICS
+# ============================================================
+
+@app.middleware("http")
+async def record_metrics(request: Request, call_next):
+    start = time.perf_counter()
+    status = 500
+    try:
+        response = await call_next(request)
+        status = response.status_code
+        return response
+    finally:
+        # Use the route template (/sessions/{doc_id}) so each doc doesn't create a new series
+        route = request.scope.get("route")
+        path = getattr(route, "path", "unmatched")
+        if path != "/metrics":
+            HTTP_REQUESTS.labels(request.method, path, str(status)).inc()
+            HTTP_LATENCY.labels(request.method, path).observe(time.perf_counter() - start)
+
+
+@app.get("/metrics")
+async def metrics():
+    # Vector store size is read on scrape (only once the engine is up)
+    if rag_engine is not None:
+        try:
+            collections = rag_engine.chroma_client.list_collections()
+            VECTOR_COLLECTIONS.set(len(collections))
+            VECTOR_CHUNKS.set(sum(c.count() for c in collections))
+        except Exception as e:
+            logger.warning(f"Could not read vector store size: {e}")
+
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
+
+
+app.include_router(create_inspector_router(lambda: get_rag_engine()))
+
+
+# ============================================================
+# DOMAINS
+# ============================================================
+
+@app.get("/domains")
+async def get_domains():
+    return {"domains": list_domains()}
 
 
 # ============================================================

@@ -28,6 +28,27 @@
   margin-top: 0.25rem;
 }
 
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.inspector-header-button {
+  background-color: var(--surface-2);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inspector-header-button:hover {
+  border-color: var(--accent);
+}
+
 .new-doc-button {
   background-color: var(--surface-2);
   color: var(--text-primary);
@@ -109,6 +130,89 @@
 
 .citation-chip:hover {
   background-color: var(--accent-tint);
+}
+
+/* ---------- Suggested questions ---------- */
+
+.suggestions {
+  margin: auto 0;
+  text-align: center;
+}
+
+.suggestions-title {
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.suggestion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.suggestion-chip {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.suggestion-chip:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Rendered answers ---------- */
+
+.message-content p + p,
+.message-content p + ul,
+.message-content ul + p,
+.message-content .md-table-wrap + p,
+.message-content .md-table-wrap + ul,
+.message-content p + .md-table-wrap {
+  margin-top: 0.6rem;
+}
+
+.message-content ul {
+  padding-left: 1.25rem;
+}
+
+.message-content p {
+  white-space: pre-wrap;
+}
+
+.md-table-wrap {
+  overflow-x: auto;
+}
+
+.md-table {
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.md-table th,
+.md-table td {
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.6rem;
+  text-align: left;
+}
+
+.md-table th {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.message-content .disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
 }
 
 .chat-input-form {

@@ -1,0 +1,33 @@
+{
+  "label": "General",
+  "description": "Any document. Plain answers grounded in the text.",
+  "system": "You are a helpful document assistant. Answer the user's question using only the context below. If the context does not contain the answer, say so plainly instead of guessing.",
+  "answer_format": "Answer in a few clear sentences. After each fact, cite the chunk it came from, for example [Chunk 2].",
+  "rules": [],
+  "glossary": {},
+  "examples": [
+    {
+      "input": "When is the office open?",
+      "output": "The office is open Monday to Friday, 9 AM to 5 PM [Chunk 1]. It is closed on public holidays [Chunk 3]."
+    },
+    {
+      "input": "Who is the CEO?",
+      "output": "The document does not say who the CEO is."
+    }
+  ],
+  "suggested_questions": [
+    "Summarize this document in 5 bullet points",
+    "What are the key dates mentioned?",
+    "Who are the main people or organizations involved?"
+  ],
+  "disclaimer": null,
+  "chunking": {
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+  },
+  "retrieval": {
+    "k": 3,
+    "max_distance": 1.6
+  },
+  "not_found_message": "I couldn't find anything in this document that answers that question."
+}

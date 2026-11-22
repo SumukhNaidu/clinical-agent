@@ -1,0 +1,739 @@
+{
+  "uid": "cliniq-rag",
+  "title": "ClinIQ \u2014 RAG pipeline",
+  "tags": [
+    "cliniq"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "type": "row",
+      "title": "Answer model (Qwen3-4B) \u2014 tokens",
+      "id": 1,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "Tokens in the selected time range",
+      "description": "Prompt tokens = system prompt + retrieved chunks + question. Completion tokens = the answer.",
+      "id": 2,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_llm_tokens_total{kind=\"prompt\"}[$__range]))",
+          "legendFormat": "Prompt (read)",
+          "refId": "A",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_llm_tokens_total{kind=\"completion\"}[$__range]))",
+          "legendFormat": "Completion (generated)",
+          "refId": "B",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_queries_total[$__range]))",
+          "legendFormat": "Questions",
+          "refId": "C",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Average per question",
+      "description": "",
+      "id": 3,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_llm_tokens_total{kind=\"prompt\"}[$__range])) / sum(increase(cliniq_queries_total[$__range]))",
+          "legendFormat": "Prompt tokens",
+          "refId": "A",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_llm_tokens_total{kind=\"completion\"}[$__range])) / sum(increase(cliniq_queries_total[$__range]))",
+          "legendFormat": "Answer tokens",
+          "refId": "B",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_llm_generation_tokens_per_second_sum[$__range])) / sum(increase(cliniq_llm_generation_tokens_per_second_count[$__range]))",
+          "legendFormat": "Tokens / second",
+          "refId": "C",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Token usage over time (per minute)",
+      "description": "",
+      "id": 4,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum by (kind) (increase(cliniq_llm_tokens_total[1m]))",
+          "legendFormat": "{{kind}}",
+          "refId": "A",
+          "instant": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "auto",
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Where answer time goes",
+      "id": 5,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "panels": []
+    },
+    {
+      "type": "bargauge",
+      "title": "Average seconds per phase",
+      "description": "load = loading the model into RAM (only after idle), prompt_eval = reading the prompt, generation = writing the answer.",
+      "id": 6,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum by (phase) (increase(cliniq_llm_seconds_sum[$__range])) / sum by (phase) (increase(cliniq_llm_seconds_count[$__range]))",
+          "legendFormat": "{{phase}}",
+          "refId": "A",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "horizontal",
+        "displayMode": "gradient"
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Answer model time per call (avg, 5m)",
+      "description": "",
+      "id": 7,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum by (phase) (rate(cliniq_llm_seconds_sum{phase!=\"total\"}[5m])) / sum by (phase) (rate(cliniq_llm_seconds_count{phase!=\"total\"}[5m]))",
+          "legendFormat": "{{phase}}",
+          "refId": "A",
+          "instant": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "auto",
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "API latency p95 by route",
+      "description": "",
+      "id": 8,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 9
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "histogram_quantile(0.95, sum by (le, route) (rate(cliniq_http_request_seconds_bucket[5m])))",
+          "legendFormat": "{{route}}",
+          "refId": "A",
+          "instant": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "auto",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Embeddings & retrieval (Qwen3-Embedding + Chroma)",
+      "id": 9,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "Embedding tokens in range",
+      "description": "",
+      "id": 10,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 17
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_embedding_tokens_total{kind=\"document\"}[$__range]))",
+          "legendFormat": "Document chunks",
+          "refId": "A",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_embedding_tokens_total{kind=\"query\"}[$__range]))",
+          "legendFormat": "Questions",
+          "refId": "B",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_embedding_texts_total{kind=\"document\"}[$__range]))",
+          "legendFormat": "Chunks embedded",
+          "refId": "C",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Retrieval time (avg, 5m)",
+      "description": "",
+      "id": 11,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 17
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(rate(cliniq_embedding_seconds_sum{kind=\"query\"}[5m])) / sum(rate(cliniq_embedding_seconds_count{kind=\"query\"}[5m]))",
+          "legendFormat": "embed question",
+          "refId": "A",
+          "instant": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "rate(cliniq_retrieval_seconds_sum[5m]) / rate(cliniq_retrieval_seconds_count[5m])",
+          "legendFormat": "Chroma search",
+          "refId": "B",
+          "instant": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "auto",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Best match distance (avg, 5m)",
+      "description": "Squared L2 distance of the closest chunk. Lower = better match. Rising values mean questions are not well covered by the documents.",
+      "id": 12,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 17
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "rate(cliniq_retrieval_top_distance_sum[5m]) / rate(cliniq_retrieval_top_distance_count[5m])",
+          "legendFormat": "top-1 L2 distance",
+          "refId": "A",
+          "instant": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 3,
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "showPoints": "auto",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Documents & vector store",
+      "id": 13,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "Vector store",
+      "description": "",
+      "id": 14,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 25
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "cliniq_vector_collections",
+          "legendFormat": "Documents",
+          "refId": "A",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "cliniq_vector_chunks",
+          "legendFormat": "Vectors (chunks)",
+          "refId": "B",
+          "instant": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_documents_uploaded_total[$__range]))",
+          "legendFormat": "Uploads in range",
+          "refId": "C",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      }
+    },
+    {
+      "type": "bargauge",
+      "title": "Average upload time per stage",
+      "description": "load = read PDF/DOCX, split = chunking, embed = embedding model, store = write to Chroma.",
+      "id": 15,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 25
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum by (stage) (increase(cliniq_upload_stage_seconds_sum[$__range])) / sum by (stage) (increase(cliniq_upload_stage_seconds_count[$__range]))",
+          "legendFormat": "{{stage}}",
+          "refId": "A",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "orientation": "horizontal",
+        "displayMode": "gradient"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Chunks per upload (avg)",
+      "description": "",
+      "id": 16,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 25
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum(increase(cliniq_upload_chunks_sum[$__range])) / sum(increase(cliniq_upload_chunks_count[$__range]))",
+          "legendFormat": "Chunks",
+          "refId": "A",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      }
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  }
+}
