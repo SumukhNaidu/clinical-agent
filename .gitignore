@@ -28,3 +28,11 @@ Thumbs.db
 
 # Temporary
 *.tmp
+**/chroma_db/
+
+# Evaluation outputs
+eval/results/
+eval/.cache/
+
+# Chat history database
+**/chat_history.db

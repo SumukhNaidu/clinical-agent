@@ -1,34 +1,32 @@
-import { useState, useEffect } from 'react';
 import './DomainSelector.css';
 
-const DOMAINS = [
+// Shown until the backend's /domains list loads (or if it can't be reached)
+export const FALLBACK_DOMAINS = [
   { key: 'general', label: 'General' },
   { key: 'legal', label: 'Legal' },
   { key: 'finance', label: 'Finance' },
-  { key: 'research', label: 'Research' }
+  { key: 'research', label: 'Research' },
+  { key: 'medical', label: 'Medical' }
 ];
 
-export default function DomainSelector({ domain, onChange }) {
-  const [value, setValue] = useState(domain || (import.meta.env.VITE_DOMAIN || 'general'));
+export default function DomainSelector({ domain, domains, onChange }) {
+  const options = domains?.length ? domains : FALLBACK_DOMAINS;
+  const current = options.find((d) => d.key === domain);
 
-  useEffect(() => {
+  const handleChange = (value) => {
     onChange?.(value);
     try { localStorage.setItem('cliniq_domain', value); } catch (e) {}
-  }, [value]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('cliniq_domain');
-    if (stored) setValue(stored);
-  }, []);
+  };
 
   return (
     <div className="domain-selector">
       <label htmlFor="domain-select">Domain:</label>
-      <select id="domain-select" value={value} onChange={(e) => setValue(e.target.value)}>
-        {DOMAINS.map(d => (
+      <select id="domain-select" value={domain} onChange={(e) => handleChange(e.target.value)}>
+        {options.map((d) => (
           <option key={d.key} value={d.key}>{d.label}</option>
         ))}
       </select>
+      {current?.description && <p className="domain-description">{current.description}</p>}
     </div>
   );
 }

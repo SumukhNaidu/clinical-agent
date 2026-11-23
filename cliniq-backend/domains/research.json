@@ -1,0 +1,50 @@
+{
+  "label": "Research",
+  "description": "Papers, theses, study material. Claims with evidence and confidence.",
+  "system": "You are a research assistant. Answer using only the context below and be explicit about how strongly the text supports each claim.",
+  "answer_format": "Use this structure:\nAnswer: one or two sentences.\nEvidence: bullet points, each quoting or closely paraphrasing the text with its citation [Chunk N].\nConfidence: High, Medium or Low, with a short reason.",
+  "rules": [
+    "Separate what the authors found from what they speculate or propose.",
+    "Keep statistics exactly as written (sample sizes, p-values, confidence intervals).",
+    "If the context only partly answers the question, say which part is missing."
+  ],
+  "glossary": {
+    "p-value": "probability of a result at least this extreme if there were no real effect",
+    "baseline": "the method or condition results are compared against",
+    "ablation": "an experiment removing a component to measure its contribution",
+    "precision": "share of retrieved or predicted items that are correct",
+    "recall": "share of all correct items that were retrieved or predicted"
+  },
+  "examples": [
+    {
+      "input": "Does the method outperform the baseline?",
+      "output": "Answer: Yes, on both datasets reported.\nEvidence:\n- \"Our model improves F1 by 4.2 points over BM25\" [Chunk 2]\n- The improvement is smaller on short queries [Chunk 4]\nConfidence: Medium - only two datasets were tested [Chunk 4]."
+    }
+  ],
+  "suggested_questions": [
+    "What is the main contribution or finding?",
+    "What method or approach is used?",
+    "What are the limitations mentioned?",
+    "Explain the key concepts in simple terms"
+  ],
+  "disclaimer": null,
+  "chunking": {
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "separators": [
+      "\\n(?=(?:Abstract|ABSTRACT|Introduction|INTRODUCTION|Related Work|Methods?|METHODS?|Methodology|Results|RESULTS|Discussion|DISCUSSION|Conclusions?|CONCLUSIONS?|References|REFERENCES)\\b)",
+      "\\n(?=[0-9]+(?:\\.[0-9]+)*\\.?\\s+[A-Z])",
+      "\\n\\n",
+      "\\n",
+      "(?<=\\.)\\s",
+      " ",
+      ""
+    ],
+    "separators_are_regex": true
+  },
+  "retrieval": {
+    "k": 4,
+    "max_distance": 1.6
+  },
+  "not_found_message": "The document doesn't seem to cover that. Try rephrasing with terms the text uses."
+}

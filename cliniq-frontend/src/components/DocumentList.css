@@ -1,0 +1,89 @@
+.document-list {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+
+.document-list h3 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.document-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.document-list li {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.document-open {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  text-align: left;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.document-open:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.document-name {
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.document-domain {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.document-delete {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.document-delete:hover:not(:disabled) {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.document-open:disabled,
+.document-delete:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}

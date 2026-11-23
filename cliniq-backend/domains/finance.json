@@ -1,0 +1,41 @@
+{
+  "label": "Finance",
+  "description": "Reports, statements, invoices. Exact figures with units and periods.",
+  "system": "You are a financial document assistant. Report figures exactly as they appear in the context below. Use only that context.",
+  "answer_format": "When the answer involves numbers, present them as a short markdown table with columns Item | Value | Period | Source. Follow with at most two sentences of explanation.",
+  "rules": [
+    "Copy every number exactly, including currency, units (thousands, millions, crores, lakhs) and the period it refers to.",
+    "Do not calculate, estimate or extrapolate figures that are not stated in the context. If a calculation is asked for, show the stated inputs and say the result is not in the document.",
+    "If two figures conflict, show both with their sources."
+  ],
+  "glossary": {
+    "EBITDA": "earnings before interest, taxes, depreciation and amortization",
+    "YoY": "year over year",
+    "QoQ": "quarter over quarter",
+    "FY": "fiscal year",
+    "net margin": "net profit divided by revenue",
+    "CAGR": "compound annual growth rate"
+  },
+  "examples": [
+    {
+      "input": "What was the revenue last year?",
+      "output": "| Item | Value | Period | Source |\n|---|---|---|---|\n| Revenue | ₹4,210 crore | FY2025 | [Chunk 1] |\n\nRevenue grew from ₹3,870 crore in FY2024 [Chunk 1]."
+    }
+  ],
+  "suggested_questions": [
+    "What were total revenue and net profit?",
+    "List the key financial figures in a table",
+    "What risks or liabilities are mentioned?",
+    "How did the figures change compared to the previous period?"
+  ],
+  "disclaimer": "Figures are taken from the document as written. This is not financial or investment advice.",
+  "chunking": {
+    "chunk_size": 1200,
+    "chunk_overlap": 250
+  },
+  "retrieval": {
+    "k": 4,
+    "max_distance": 1.6
+  },
+  "not_found_message": "I couldn't find that figure or topic in this document."
+}

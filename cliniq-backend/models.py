@@ -14,6 +14,7 @@ class Citation(BaseModel):
     chunk_id: str
     page: Optional[int] = None
     section: Optional[str] = None
+    label: Optional[str] = None  # "Chunk N", as the model saw it in its context
     content: str
 
 
