@@ -34,6 +34,11 @@ export const apiClient = {
     return domains;
   },
 
+  async listDocuments() {
+    const { documents } = await getJson('/documents');
+    return documents;
+  },
+
   async uploadDocument(file, domain = DEFAULT_DOMAIN) {
     const formData = new FormData();
     formData.append('file', file);
