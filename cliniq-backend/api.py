@@ -146,6 +146,23 @@ async def get_domains():
 
 
 # ============================================================
+# DOCUMENTS
+# ============================================================
+
+@app.get("/documents")
+async def list_documents():
+    engine = get_rag_engine()
+
+    if engine is None:
+        raise HTTPException(
+            status_code=503,
+            detail="RAG_DEPENDENCIES_MISSING"
+        )
+
+    return {"documents": engine.list_documents()}
+
+
+# ============================================================
 # TEMP DIRECTORY
 # ============================================================
 

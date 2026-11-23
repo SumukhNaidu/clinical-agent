@@ -19,6 +19,9 @@ services:
       - key: CHROMA_PERSIST_DIR
         value: /data/chroma_data
         scope: runtime
+      - key: HISTORY_DB
+        value: /data/chat_history.db
+        scope: runtime
 
 # Notes:
 # - Replace repo with your Git URL if you use render.yaml for IaC. When creating

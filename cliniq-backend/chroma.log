@@ -30313,3 +30313,692 @@ INFO:     [01-11-2026 18:30:37] 127.0.0.1:52145 - "GET /api/v2/tenants/default_t
 [36mDEBUG[0m:    [04-11-2026 01:59:53] Stopping component OpenTelemetryClient
 [32mINFO[0m:     [04-11-2026 01:59:53] Application shutdown complete.
 [32mINFO[0m:     [04-11-2026 01:59:53] Finished server process [[36m23700[0m]
+WARNING:  [22-11-2026 15:58:06] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+DEBUG:    [22-11-2026 15:58:07] Starting component System
+DEBUG:    [22-11-2026 15:58:07] Starting component OpenTelemetryClient
+DEBUG:    [22-11-2026 15:58:07] Starting component SqliteDB
+DEBUG:    [22-11-2026 15:58:07] Starting component SimpleQuotaEnforcer
+DEBUG:    [22-11-2026 15:58:07] Starting component Posthog
+DEBUG:    [22-11-2026 15:58:07] Starting component SimpleRateLimitEnforcer
+DEBUG:    [22-11-2026 15:58:07] Starting component LocalSegmentManager
+DEBUG:    [22-11-2026 15:58:07] Starting component LocalExecutor
+DEBUG:    [22-11-2026 15:58:07] Starting component SegmentAPI
+ERROR:    [22-11-2026 15:58:07] Failed to send telemetry event ServerStartEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:07] Started server process [25472]
+INFO:     [22-11-2026 15:58:07] Waiting for application startup.
+INFO:     [22-11-2026 15:58:07] Application startup complete.
+INFO:     [22-11-2026 15:58:07] Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     [22-11-2026 15:58:08] 127.0.0.1:52320 - "GET /api/v1/heartbeat HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:13] 127.0.0.1:62662 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62665 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62665 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:16] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:16] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:16] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:16] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:16] 127.0.0.1:62662 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:38] 127.0.0.1:53451 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53454 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53454 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/f9a716c4-43ab-4708-88a7-fe9467b277ca HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:41] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a8f37e1b-4b1b-4727-9230-20bd73342fff HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:41] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/35d86054-b972-41b4-bceb-d872bf9724c5 HTTP/1.1" 200
+ERROR:    [22-11-2026 15:58:41] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 15:58:41] 127.0.0.1:53451 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:13] 127.0.0.1:63570 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63573 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63573 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:09:15] 127.0.0.1:63570 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/f9a716c4-43ab-4708-88a7-fe9467b277ca HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:09:15] Starting component PersistentLocalHnswSegment
+INFO:     [22-11-2026 16:09:16] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:09:18] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:09:18] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:09:18] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [22-11-2026 16:09:18] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:09:18] 127.0.0.1:63570 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+INFO:     [22-11-2026 16:10:41] 127.0.0.1:56209 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/35d86054-b972-41b4-bceb-d872bf9724c5 HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:10:41] Starting component PersistentLocalHnswSegment
+INFO:     [22-11-2026 16:10:41] 127.0.0.1:56209 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:10:44] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 16:10:44] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:10:44] 127.0.0.1:56209 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [22-11-2026 16:10:44] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:10:44] 127.0.0.1:56209 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+ERROR:    [22-11-2026 16:11:29] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:11:29] 127.0.0.1:56246 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:11:29] 127.0.0.1:56246 - "GET /api/v2/pre-flight-checks HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:11:29] Starting component PersistentLocalHnswSegment
+ERROR:    [22-11-2026 16:11:29] Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:11:29] 127.0.0.1:56246 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/add HTTP/1.1" 201
+INFO:     [22-11-2026 16:11:29] 127.0.0.1:56246 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a HTTP/1.1" 200
+ERROR:    [22-11-2026 16:11:29] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:11:29] 127.0.0.1:56246 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:11:32] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 16:11:32] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:11:32] 127.0.0.1:56246 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [22-11-2026 16:11:32] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+WARNING:  [22-11-2026 16:11:32] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 16:11:32] 127.0.0.1:56246 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/f9a716c4-43ab-4708-88a7-fe9467b277ca HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:44] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:15:47] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:15:47] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:15:47] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:15:47] 127.0.0.1:62217 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:17:01] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:17:01] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:17:01] 127.0.0.1:50978 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:17:01] 127.0.0.1:50978 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:20:15] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:20:15] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:20:15] 127.0.0.1:60553 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:20:15] 127.0.0.1:60553 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:21:06] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:21:06] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:21:06] 127.0.0.1:55601 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:21:06] 127.0.0.1:55601 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:22:21] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:22:21] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:22:21] 127.0.0.1:52818 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:22:21] 127.0.0.1:52818 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:23:26] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:23:26] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:23:26] 127.0.0.1:58420 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:23:26] 127.0.0.1:58420 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:24:37] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:24:37] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:24:37] 127.0.0.1:54128 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:24:37] 127.0.0.1:54128 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:30:57] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:30:57] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:30:57] 127.0.0.1:54744 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:30:57] 127.0.0.1:54744 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+INFO:     [22-11-2026 16:32:18] 127.0.0.1:55382 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a8f37e1b-4b1b-4727-9230-20bd73342fff HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:32:18] Starting component PersistentLocalHnswSegment
+INFO:     [22-11-2026 16:32:18] 127.0.0.1:55382 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:32:21] Collection a8f37e1b-4b1b-4727-9230-20bd73342fff already exists, returning existing collection.
+ERROR:    [22-11-2026 16:32:21] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:32:21] 127.0.0.1:55382 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [22-11-2026 16:32:21] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:32:21] 127.0.0.1:55382 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:33:36] Collection a8f37e1b-4b1b-4727-9230-20bd73342fff already exists, returning existing collection.
+ERROR:    [22-11-2026 16:33:36] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:33:36] 127.0.0.1:50197 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:33:36] 127.0.0.1:50197 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/query HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/f9a716c4-43ab-4708-88a7-fe9467b277ca HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:22] 127.0.0.1:51985 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:45:30] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:45:30] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:45:30] 127.0.0.1:52005 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:30] 127.0.0.1:52005 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:45:58] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:45:58] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:45:58] 127.0.0.1:53560 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:45:58] 127.0.0.1:53560 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 16:46:50] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 16:46:50] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 16:46:50] 127.0.0.1:57798 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 16:46:50] 127.0.0.1:57798 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 17:33:18] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 17:33:18] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 17:33:18] 127.0.0.1:61504 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 17:33:18] 127.0.0.1:61504 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 17:34:05] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 17:34:05] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 17:34:05] 127.0.0.1:56300 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 17:34:05] 127.0.0.1:56300 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 17:34:26] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 17:34:26] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 17:34:26] 127.0.0.1:56319 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 17:34:26] 127.0.0.1:56319 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 17:35:09] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 17:35:09] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 17:35:09] 127.0.0.1:56361 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 17:35:09] 127.0.0.1:56361 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 17:35:33] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 17:35:33] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 17:35:33] 127.0.0.1:56379 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 17:35:33] 127.0.0.1:56379 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+INFO:     [22-11-2026 22:05:28] 127.0.0.1:59451 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a8f37e1b-4b1b-4727-9230-20bd73342fff HTTP/1.1" 200
+INFO:     [22-11-2026 22:05:28] 127.0.0.1:59451 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:05:38] Collection a8f37e1b-4b1b-4727-9230-20bd73342fff already exists, returning existing collection.
+ERROR:    [22-11-2026 22:05:38] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:05:38] 127.0.0.1:61866 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:05:38] 127.0.0.1:61866 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:06:52] Collection a8f37e1b-4b1b-4727-9230-20bd73342fff already exists, returning existing collection.
+ERROR:    [22-11-2026 22:06:52] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:06:52] 127.0.0.1:58806 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:06:52] 127.0.0.1:58806 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:08:14] Collection a8f37e1b-4b1b-4727-9230-20bd73342fff already exists, returning existing collection.
+ERROR:    [22-11-2026 22:08:14] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:08:14] 127.0.0.1:58860 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:08:14] 127.0.0.1:58860 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:09:23] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 22:09:23] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:09:23] 127.0.0.1:58912 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:09:23] 127.0.0.1:58912 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:09:58] Collection f9a716c4-43ab-4708-88a7-fe9467b277ca already exists, returning existing collection.
+ERROR:    [22-11-2026 22:09:58] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:09:58] 127.0.0.1:58415 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:09:58] 127.0.0.1:58415 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/query HTTP/1.1" 200
+INFO:     [22-11-2026 22:10:37] 127.0.0.1:63432 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/35d86054-b972-41b4-bceb-d872bf9724c5 HTTP/1.1" 200
+INFO:     [22-11-2026 22:10:37] 127.0.0.1:63432 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:10:39] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:10:39] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:10:39] 127.0.0.1:63432 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:10:39] 127.0.0.1:63432 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:11:42] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:11:42] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:11:42] 127.0.0.1:63481 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:11:42] 127.0.0.1:63481 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:12:35] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:12:35] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:12:35] 127.0.0.1:63525 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:12:35] 127.0.0.1:63525 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:13:26] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:13:26] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:13:26] 127.0.0.1:60718 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:13:26] 127.0.0.1:60718 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:14:43] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:14:43] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:14:43] 127.0.0.1:60765 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:14:43] 127.0.0.1:60765 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:15:32] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:15:32] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:15:32] 127.0.0.1:52462 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:15:32] 127.0.0.1:52462 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:16:27] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:16:27] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:16:27] 127.0.0.1:52507 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:16:27] 127.0.0.1:52507 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:17:35] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:17:35] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:17:35] 127.0.0.1:49256 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:17:35] 127.0.0.1:49256 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:18:26] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:18:26] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:18:26] 127.0.0.1:49708 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:18:26] 127.0.0.1:49708 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:19:12] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:19:12] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:19:12] 127.0.0.1:49752 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:19:12] 127.0.0.1:49752 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:19:34] Collection 35d86054-b972-41b4-bceb-d872bf9724c5 already exists, returning existing collection.
+ERROR:    [22-11-2026 22:19:34] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:19:34] 127.0.0.1:49769 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [22-11-2026 22:19:34] 127.0.0.1:49769 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/query HTTP/1.1" 200
+INFO:     [22-11-2026 22:20:14] 127.0.0.1:58323 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a HTTP/1.1" 200
+INFO:     [22-11-2026 22:20:14] 127.0.0.1:58323 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/get HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:20:16] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:20:16] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:20:16] 127.0.0.1:58323 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:20:16] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:20:16] 127.0.0.1:58323 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:22:56] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:22:56] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:22:56] 127.0.0.1:55377 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:22:56] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:22:56] 127.0.0.1:55377 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:23:50] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:23:50] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:23:50] 127.0.0.1:55607 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:23:50] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:23:50] 127.0.0.1:55607 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:24:39] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:24:39] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:24:39] 127.0.0.1:55651 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:24:39] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:24:39] 127.0.0.1:55651 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:25:24] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:25:24] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:25:24] 127.0.0.1:51456 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:25:24] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:25:24] 127.0.0.1:51456 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:26:04] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:26:04] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:26:04] 127.0.0.1:61829 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:26:04] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:26:04] 127.0.0.1:61829 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:30:12] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:30:12] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:30:12] 127.0.0.1:54720 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:30:12] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:30:12] 127.0.0.1:54720 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:31:01] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:31:01] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:31:01] 127.0.0.1:56107 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:31:01] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:31:01] 127.0.0.1:56107 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:31:48] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:31:48] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:31:48] 127.0.0.1:56151 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:31:48] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:31:48] 127.0.0.1:56151 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+DEBUG:    [22-11-2026 22:32:10] Collection ee59e9c6-3a0a-41cf-a4e9-dcf44731fa7a already exists, returning existing collection.
+ERROR:    [22-11-2026 22:32:10] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [22-11-2026 22:32:10] 127.0.0.1:56168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+WARNING:  [22-11-2026 22:32:10] Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+INFO:     [22-11-2026 22:32:10] 127.0.0.1:56168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/query HTTP/1.1" 200
+WARNING:  [23-11-2026 22:46:12] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+DEBUG:    [23-11-2026 22:46:13] Starting component System
+DEBUG:    [23-11-2026 22:46:13] Starting component OpenTelemetryClient
+DEBUG:    [23-11-2026 22:46:13] Starting component SqliteDB
+DEBUG:    [23-11-2026 22:46:13] Starting component SimpleQuotaEnforcer
+DEBUG:    [23-11-2026 22:46:13] Starting component Posthog
+DEBUG:    [23-11-2026 22:46:13] Starting component SimpleRateLimitEnforcer
+DEBUG:    [23-11-2026 22:46:13] Starting component LocalSegmentManager
+DEBUG:    [23-11-2026 22:46:13] Starting component LocalExecutor
+DEBUG:    [23-11-2026 22:46:13] Starting component SegmentAPI
+ERROR:    [23-11-2026 22:46:13] Failed to send telemetry event ServerStartEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:46:13] Started server process [19264]
+INFO:     [23-11-2026 22:46:13] Waiting for application startup.
+INFO:     [23-11-2026 22:46:13] Application startup complete.
+INFO:     [23-11-2026 22:46:13] Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     [23-11-2026 22:46:14] 127.0.0.1:55145 - "GET /api/v1/heartbeat HTTP/1.1" 200
+INFO:     [23-11-2026 22:46:28] 127.0.0.1:55025 - "GET /api/v1/heartbeat HTTP/1.1" 200
+INFO:     [23-11-2026 22:50:02] 127.0.0.1:55578 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [23-11-2026 22:50:05] 127.0.0.1:55580 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [23-11-2026 22:50:05] 127.0.0.1:55580 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+ERROR:    [23-11-2026 22:50:34] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:50:34] 127.0.0.1:55636 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:50:34] 127.0.0.1:55636 - "GET /api/v2/pre-flight-checks HTTP/1.1" 200
+DEBUG:    [23-11-2026 22:50:34] Starting component PersistentLocalHnswSegment
+ERROR:    [23-11-2026 22:50:35] Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:50:35] 127.0.0.1:55636 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/add HTTP/1.1" 201
+DEBUG:    [23-11-2026 22:50:52] Collection a7dc98d4-fc45-4575-bcbf-4b2b5be2d8fe already exists, returning existing collection.
+ERROR:    [23-11-2026 22:50:52] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:50:52] 127.0.0.1:50069 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [23-11-2026 22:50:52] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:50:52] 127.0.0.1:50069 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/query HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:25] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:25] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:25] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:25] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:25] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+ERROR:    [23-11-2026 22:51:26] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+ERROR:    [23-11-2026 22:51:26] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+ERROR:    [23-11-2026 22:51:26] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+ERROR:    [23-11-2026 22:51:26] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:26] 127.0.0.1:52905 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+DEBUG:    [23-11-2026 22:51:45] Collection a7dc98d4-fc45-4575-bcbf-4b2b5be2d8fe already exists, returning existing collection.
+ERROR:    [23-11-2026 22:51:45] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:51:45] 127.0.0.1:50389 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:51:45] 127.0.0.1:50389 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/query HTTP/1.1" 200
+ERROR:    [23-11-2026 22:52:47] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:52:47] 127.0.0.1:61752 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+DEBUG:    [23-11-2026 22:52:47] Starting component PersistentLocalHnswSegment
+ERROR:    [23-11-2026 22:52:47] Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:52:47] 127.0.0.1:61752 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/add HTTP/1.1" 201
+DEBUG:    [23-11-2026 22:53:37] Collection 476b1ae2-143b-49d2-8db8-f68e9709f2a1 already exists, returning existing collection.
+ERROR:    [23-11-2026 22:53:37] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:53:37] 127.0.0.1:64538 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [23-11-2026 22:53:37] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:53:37] 127.0.0.1:64538 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/query HTTP/1.1" 200
+DEBUG:    [23-11-2026 22:55:26] Collection 476b1ae2-143b-49d2-8db8-f68e9709f2a1 already exists, returning existing collection.
+ERROR:    [23-11-2026 22:55:26] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:55:26] 127.0.0.1:63254 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:55:26] 127.0.0.1:63254 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/query HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:03] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+ERROR:    [23-11-2026 22:56:04] Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:04] 127.0.0.1:53515 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:13] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/476b1ae2-143b-49d2-8db8-f68e9709f2a1 HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:18] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:21] 127.0.0.1:53899 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:33] 127.0.0.1:64102 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:43] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:44] 127.0.0.1:53401 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:56:53] 127.0.0.1:60261 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:04] 127.0.0.1:64213 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+DEBUG:    [23-11-2026 22:57:25] Collection 476b1ae2-143b-49d2-8db8-f68e9709f2a1 already exists, returning existing collection.
+ERROR:    [23-11-2026 22:57:25] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 22:57:25] 127.0.0.1:60089 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 22:57:25] 127.0.0.1:60089 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/query HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:14] 127.0.0.1:61127 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:17] 127.0.0.1:61129 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:17] 127.0.0.1:61129 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:16:18] 127.0.0.1:61127 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+DEBUG:    [23-11-2026 23:16:28] Collection f14c6fee-1819-4c41-9550-20d5d136a4c4 already exists, returning existing collection.
+ERROR:    [23-11-2026 23:16:28] Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:     [23-11-2026 23:16:28] 127.0.0.1:61141 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+ERROR:    [23-11-2026 23:16:28] Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+DEBUG:    [23-11-2026 23:16:28] Starting component PersistentLocalHnswSegment
+WARNING:  [23-11-2026 23:16:28] Number of requested results 3 is greater than number of elements in index 1, updating n_results = 1
+INFO:     [23-11-2026 23:16:28] 127.0.0.1:61141 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/query HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:01] 127.0.0.1:61168 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:03] 127.0.0.1:61171 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:03] 127.0.0.1:61171 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:17:04] 127.0.0.1:61168 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:15] 127.0.0.1:61704 - "GET /api/v2/auth/identity HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:17] 127.0.0.1:61706 - "GET /api/v2/tenants/default_tenant HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:17] 127.0.0.1:61706 - "GET /api/v2/tenants/default_tenant/databases/default_database HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/0edf0de6-c817-4374-a469-1226d5750898/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/37540571-fd71-449d-9f7c-f421c6949089/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/408b5ddb-af61-467d-b859-376d98304aa8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/42728125-1e3c-4411-9916-879c7795204e/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/90d2a68d-6973-4b86-8d6e-0999a4eae0f8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f198176-4e2e-40cc-8d9e-dd59309b49b2/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/9f44da26-d2e2-4605-96a3-35e54a88d492/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/a60ebf5b-4d18-4dce-9d9c-f9fad23ca3e8/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/b130e335-922b-4832-a769-76d96bd9c878/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/c65a286a-a98d-4ad1-9e9f-02a330a4e1c9/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "POST /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/get HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/cecac8c6-f2d9-498d-8b0e-3bd915490668/count HTTP/1.1" 200
+INFO:     [23-11-2026 23:18:18] 127.0.0.1:61704 - "GET /api/v2/tenants/default_tenant/databases/default_database/collections/fc002582-fe10-4a09-a2f2-05809dca2826/count HTTP/1.1" 200

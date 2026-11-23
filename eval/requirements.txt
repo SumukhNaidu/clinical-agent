@@ -1,0 +1,6 @@
+# Evaluation runs in its own venv (eval/.venv): ragas needs newer langchain/numpy/openai
+# than the backend pins, so it talks to the backend over HTTP instead of importing it.
+ragas==0.4.4
+httpx
+python-dotenv
+python-docx

@@ -17,6 +17,7 @@ import chromadb
 from langchain_core.output_parsers import StrOutputParser
 
 from models import Citation
+from history import ChatHistoryStore
 from domains import (
     DEFAULT_DOMAIN, normalize_key, load_domain, get_splitter,
     build_system_prompt, add_disclaimer
@@ -98,7 +99,7 @@ class RAGEngine:
         # Default splitter; uploads use their domain's splitter (see domains/*.json)
         self.text_splitter = get_splitter(DEFAULT_DOMAIN)
 
-        self.session_histories = {}
+        self.history = ChatHistoryStore()
         self.doc_domains = {}
 
     def _init_chroma_client(self):
@@ -366,8 +367,7 @@ class RAGEngine:
             "stages_seconds": stages,
         })
 
-        # Initialize session history and record domain
-        self.session_histories[doc_id] = []
+        # Record the domain so later questions use it by default
         self.doc_domains[doc_id] = domain
 
         return {
@@ -425,11 +425,9 @@ class RAGEngine:
 
         citations = self._citations(docs)
 
-        # Update session history
-        if doc_id not in self.session_histories:
-            self.session_histories[doc_id] = []
-        self.session_histories[doc_id].append({"role": "user", "content": question})
-        self.session_histories[doc_id].append({"role": "assistant", "content": answer, "citations": [c.model_dump() for c in citations]})
+        # Persist the exchange (failed LLM calls are not saved)
+        if status != "llm_error":
+            self.history.add_exchange(doc_id, question, answer, [c.model_dump() for c in citations])
 
         latency_ms = (time.time() - start_time) * 1000
         self._log_query("query", doc_id, question, answer, retrieval,
@@ -455,6 +453,7 @@ class RAGEngine:
             answer = add_disclaimer(load_domain(domain_key)["not_found_message"], domain_key)
             self._log_query("query_stream", doc_id, question, answer, retrieval,
                             None, time.time() - start_time, "not_found")
+            self.history.add_exchange(doc_id, question, answer, [])
             yield answer
             return
 
@@ -490,11 +489,35 @@ class RAGEngine:
                     answer_parts.append(disclaimer)
                     yield disclaimer
         finally:
+            if status == "ok" and answer_parts:
+                self.history.add_exchange(doc_id, question, "".join(answer_parts),
+                                          [c.model_dump() for c in self._citations(docs)])
             self._log_query("query_stream", doc_id, question, "".join(answer_parts),
                             retrieval, usage_handler.usage, time.time() - start_time, status)
 
     def get_session_history(self, doc_id: str) -> List[dict]:
-        return self.session_histories.get(doc_id, [])
+        return self.history.get(doc_id)
+
+    def list_documents(self) -> List[dict]:
+        """Documents stored in Chroma, newest first, with how many questions were asked."""
+        questions = self.history.counts()
+        documents = []
+        for col in self.chroma_client.list_collections():
+            meta = col.metadata or {}
+            filename = meta.get("filename")
+            if not filename:
+                # Uploads from before collection metadata existed: read it from a chunk
+                first = col.get(limit=1, include=["metadatas"])["metadatas"]
+                filename = (first[0] or {}).get("filename") if first else None
+            documents.append({
+                "doc_id": col.name,
+                "filename": filename or "(unknown)",
+                "chunk_count": col.count(),
+                "domain": normalize_key(meta.get("domain")),
+                "uploaded_at": meta.get("uploaded_at"),
+                "questions": questions.get(col.name, 0),
+            })
+        return sorted(documents, key=lambda d: d["uploaded_at"] or "", reverse=True)
 
     def delete_document(self, doc_id: str) -> dict:
         # Delete ChromaDB collection
@@ -503,8 +526,8 @@ class RAGEngine:
         except ValueError:
             pass  # Collection doesn't exist
             
-        # Clear session history
-        if doc_id in self.session_histories:
-            del self.session_histories[doc_id]
+        # Clear chat history
+        self.history.delete(doc_id)
+        self.doc_domains.pop(doc_id, None)
             
         return {"status": "deleted"}
